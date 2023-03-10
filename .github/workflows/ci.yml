@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  # TODO: topicブランチにpushされたらワークフローが発動するようにする
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: '対象ブランチをクローン'
+        uses: actions/checkout@v3
+
+      - name: 'Goの準備'
+        uses: actions/setup-go@v3
+        with:
+          go-version: '~1.18'
+
+      - name: 'テストを実行'
+        working-directory: lambda
+        # TODO: go test を実行する
+        run: |
+          pwd
+          ls

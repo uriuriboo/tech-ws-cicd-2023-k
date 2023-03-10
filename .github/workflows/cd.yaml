@@ -1,0 +1,34 @@
+name: release
+
+on:
+ ## TODO: トリガーを決める
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '~1.18'
+      - name: configure-aws-credential
+        uses: aws-actions/configure-aws-credentials@v2
+        # TODO: with: を使ってロールを指定
+      - name: login-ecr
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: app-build
+        # TODO: アプリケーションコードのビルド
+      - name: image-build
+        # TODO: コンテナイメージのビルド
+      - name: image-push
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: ## TODO: repository 名を記入
+          IMAGE_TAG: ${{ github.sha }}
+        # TODO: コンテナイメージのタグをつける
+        # TODO: コンテナイメージのアップロード
+        # TODO: Lambda にアップロードしたコンテナイメージを反映
