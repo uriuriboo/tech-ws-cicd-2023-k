@@ -21,5 +21,3 @@ jobs:
         working-directory: lambda
         # TODO: go test を実行する
         run: go test
-          pwd
-          ls
