@@ -19,5 +19,4 @@ jobs:
 
       - name: 'テストを実行'
         working-directory: lambda
-        TODO: go test を実行する
         run: go test
