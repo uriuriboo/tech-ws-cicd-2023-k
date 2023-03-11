@@ -1,7 +1,6 @@
 name: ci
 
 on:
-  # TODO: topicブランチにpushされたらワークフローが発動するようにする
   push:
     branches:
       - 'topic'
