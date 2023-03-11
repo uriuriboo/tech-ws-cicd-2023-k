@@ -1,7 +1,9 @@
 name: ci
 
 on:
-  # TODO: topicブランチにpushされたらワークフローが発動するようにする
+  push:
+    branches:
+      - 'topic'
 
 jobs:
   test:
@@ -17,7 +19,4 @@ jobs:
 
       - name: 'テストを実行'
         working-directory: lambda
-        # TODO: go test を実行する
-        run: |
-          pwd
-          ls
+        run: go test
